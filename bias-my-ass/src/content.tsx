@@ -1,8 +1,9 @@
 import cssText from "data-text:~style.css"
 import type { PlasmoCSConfig } from "plasmo"
+import { useMessage } from "@plasmohq/messaging/hook"
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://www.plasmo.com/*"]
+  matches: ["https://*.medium.com/*"]
 }
 
 export const getStyle = () => {
@@ -12,9 +13,12 @@ export const getStyle = () => {
 }
 
 const PlasmoOverlay = () => {
-  return (
-    <></>
-  )
+  const { data } = useMessage<string, string>(async (req, res) => {
+    if(req.name="sent author name") {
+      res.send(document.querySelector('a[data-testid="authorName"]').textContent);
+    }
+  });
+  console.log(data);
 }
 
 export default PlasmoOverlay
