@@ -1,1 +1,2 @@
-
+- [x] scroll bar
+- [x] author url
