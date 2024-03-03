@@ -14,9 +14,11 @@ export const getStyle = () => {
 
 const PlasmoOverlay = () => {
   const { data } = useMessage<string, string>(async (req, res) => {
-    if(req.name="sent author name") {
-      res.send(document.querySelector('a[data-testid="authorName"]').textContent);
-    }
+    const authorName = document.querySelector('a[data-testid="authorName"]').textContent;
+    const authorPhoto = document.querySelector('img[data-testid="authorPhoto"]');
+    const authorPhotoURL = authorPhoto.getAttribute('src');
+    const response = authorName+","+authorPhotoURL;
+    res.send(response);
   });
 }
 
