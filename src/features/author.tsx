@@ -5,7 +5,7 @@ export const AuthorDetails = () => {
   const [authorName, setAuthorName] = useState("")
   const [authorUrl, setAuthorUrl] = useState("")
   const [authorPhoto, setAuthorPhoto] = useState(require("../../assets/test.webp"))
-  const [authorWork, setAuthorWork] = useState("test")
+  const [authorWork, setAuthorWork] = useState("journalist")
 
   const receiveAuthorName = async () => {
     try {
