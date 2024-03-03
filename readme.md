@@ -1,2 +1,3 @@
 - [x] scroll bar
 - [x] author url
+- [x] reviews -> array
