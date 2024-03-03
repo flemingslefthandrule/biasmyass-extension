@@ -8,11 +8,16 @@ export const AuthorDetails = () => {
   const [authorWork, setAuthorWork] = useState("")
 
   const receiveAuthorName = async () => {
-    const resp = await sendToContentScript({ name: "authorName" })
-    const authorDetails = resp.split(',')
-    setAuthorName(authorDetails[0])
-    setAuthorPhoto(authorDetails[1])
-    setAuthorUrl(authorDetails[2])
+    try {
+      const resp = await sendToContentScript({ name: "authorName" })
+      const authorDetails = resp.split(",")
+      setAuthorName(authorDetails[0])
+      setAuthorPhoto(authorDetails[1])
+      setAuthorUrl(authorDetails[2])
+    } catch (error) {
+      setAuthorName("website not supported")
+      setAuthorUrl("https://google.com/search?q=biasmyasswebsitenotsupportedurl")
+    }
   }
   return (
     <a href={authorUrl} target="_blank" onLoad={receiveAuthorName} className="max-h-[56px] flex justify-center items-center p-2 gap-x-2 border-solid border-white border-2 rounded-md overflow-hidden cursor-pointer">
@@ -20,7 +25,6 @@ export const AuthorDetails = () => {
       <div className="info flex flex-col items-start justify-center">
         <span className="font-bold text-lg text-left">{authorName}</span>
         <div className="flex">
-          <p className="text-xs text-left">working as</p>
           <p id="work">{authorWork}</p>
         </div>
       </div>
