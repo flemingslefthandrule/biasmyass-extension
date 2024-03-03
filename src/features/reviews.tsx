@@ -12,7 +12,7 @@ export const Reviews = () => {
     const [reviewslist, setReviewslist] = useState(testReviews)
 
     return (
-        <div className="border-solid border-white scrollbar border-2 rounded-md overflow-y-auto p-2">
+        <div className="border-solid border-white scrollbar border-2 rounded-md overflow-y-auto px-2">
                 {reviewslist.map((review) => (
                     <div key={review} className="p-2 border-b-solid border-b-white border-b-2">{review}</div>
                 ))}
