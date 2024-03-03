@@ -5,7 +5,7 @@ import "~style.css"
 
 function IndexPopup() {
   return (
-    <div className="p-2 flex flex-col gap-3 justify-center items-center h-[600px] w-72 rounded-lg">
+    <div className="bg-black text-white p-2 flex flex-col gap-3 justify-center items-center h-[600px] w-72 rounded-lg">
       <p className="font-bold text-xl ">BiasMyAss</p>
       <AuthorDetails />
       <Summery />
