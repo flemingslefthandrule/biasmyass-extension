@@ -11,7 +11,7 @@ function IndexPopup() {
       <Summery />
       <p className="font-bold text-lg">Reviews</p>
       <Reviews />
-      <a href="https://cdn.tailwindcss.com" className="underline">For more details</a>
+      <a href="https://cdn.tailwindcss.com" target="_blank" className="underline">For more details</a>
     </div>
   )
 }
