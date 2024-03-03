@@ -18,7 +18,6 @@ const PlasmoOverlay = () => {
       res.send(document.querySelector('a[data-testid="authorName"]').textContent);
     }
   });
-  console.log(data);
 }
 
 export default PlasmoOverlay
