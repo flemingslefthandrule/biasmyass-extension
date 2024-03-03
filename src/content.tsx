@@ -14,10 +14,12 @@ export const getStyle = () => {
 
 const PlasmoOverlay = () => {
   const { data } = useMessage<string, string>(async (req, res) => {
+    const authorNameElement = document.querySelector('a[data-testid="authorName"]')
     const authorName = document.querySelector('a[data-testid="authorName"]').textContent
     const authorPhoto = document.querySelector('img[data-testid="authorPhoto"]')
     const authorPhotoURL = authorPhoto.getAttribute('src')
-    const response = authorName+","+authorPhotoURL
+    const authorUrl = authorNameElement.closest('a').href
+    const response = authorName+","+authorPhotoURL+","+authorUrl
     res.send(response)
   })
 }
