@@ -1,7 +1,9 @@
-export const Summery = () => {
+export const Summary = () => {
     return (
         <div>
-            <p className="text-center">"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quo at iusto eligendi eaque nihil cumque non doloribus tempore nesciunt, quod et nam exercitationem. Beatae, veniam."</p>
+            <p className="text-center">
+                "Jasmine Montgomery is a Senior Hiring Manager at L’Oreal based in New York. She recruits across several business units to connect with the brightest talent from around the globe."
+            </p>
         </div>
     )
 }
