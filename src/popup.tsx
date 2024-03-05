@@ -6,7 +6,7 @@ import "~style.css"
 function IndexPopup() {
   const [authorName, setAuthorName] = useState("")
   const [authorUrl, setAuthorUrl] = useState("")
-  const [authorPhoto, setAuthorPhoto] = useState(require("../assets/test.webp")
+  const [authorPhoto, setAuthorPhoto] = useState(require("../assets/test.webp"))
   const [authorWork, setAuthorWork] = useState("journalist")
 
   const receiveAuthorName = async () => {
