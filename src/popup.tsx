@@ -12,7 +12,7 @@ function IndexPopup() {
     const [authorPhoto, setAuthorPhoto] = useState(
         require("../assets/test.webp")
     )
-    const [authorWork, setAuthorWork] = useState("journalist")
+    const [authorWork, setAuthorWork] = useState("")
     const [authorSummary, setAuthorSummary] = useState("")
     const [reviews, setReviews] = useState([])
     const apiurl = 'http://localhost:8000'
@@ -29,12 +29,13 @@ function IndexPopup() {
                 .then(function (response) {
                     console.log(response);
                     setAuthorName(response.data.name)
+                    setAuthorWork(response.data.work)
                     setAuthorPhoto(response.data.photo)
-                    setAuthorSummary(response.data.bio)
+                    setAuthorSummary(response.data.summary)
                     setAuthorUrl(response.data.url)
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error)
                 })
 
             axios.get(apiurl + "/author/" + slug + "/reviews")
@@ -43,7 +44,7 @@ function IndexPopup() {
                     console.log(reviews)
                 })
                 .catch(function (error) {
-                    console.log(error);
+                    console.log(error)
                 })
         } catch (error) {
             setAuthorName("website not supported")
