@@ -24,7 +24,7 @@ function IndexPopup() {
             // setAuthorPhoto(authorDetails[1])
             // setAuthorUrl(authorDetails[2])
             const slug = authorDetails[0].replace(/ /g,"-")
-            axios.get(apiurl + "/" + slug)
+            axios.get(apiurl + "/author/" + slug)
                 .then(function (response) {
                     console.log(response);
                     setAuthorName(response.data.name)
@@ -36,7 +36,7 @@ function IndexPopup() {
                     console.log(error);
                 })
 
-            axios.get(apiurl + "/" + slug + "/reviews")
+            axios.get(apiurl + "/author/" + slug + "/reviews")
                 .then(function (response) {
                     const reviews = response.data
                     console.log(reviews)
