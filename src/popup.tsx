@@ -58,7 +58,7 @@ function IndexPopup() {
     return (
         <div
             onLoad={receiveAuthorName}
-            className="bg-black text-white flex flex-col gap-3 justify-center items-center h-[600px] w-[300px] px-[10px] py-[10px] rounded-lg">
+            className="bg-black text-white flex flex-col gap-3 items-center w-[300px] px-[10px] py-[10px] rounded-lg">
             <a
                 href="https://google.com/search?q=biasmyass"
                 target="_blank"
