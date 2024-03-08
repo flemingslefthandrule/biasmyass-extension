@@ -14,6 +14,7 @@ function IndexPopup() {
     )
     const [authorWork, setAuthorWork] = useState("journalist")
     const [authorSummary, setAuthorSummary] = useState("")
+    const [reviews, setReviews] = useState("")
     const apiurl = 'http://localhost:8000'
 
     const receiveAuthorName = async () => {
@@ -38,7 +39,7 @@ function IndexPopup() {
 
             axios.get(apiurl + "/author/" + slug + "/reviews")
                 .then(function (response) {
-                    const reviews = response.data
+                    setReviews(response.data)
                     console.log(reviews)
                 })
                 .catch(function (error) {
@@ -74,7 +75,7 @@ function IndexPopup() {
                 authorSummary = {authorSummary}
             />
             <p className="font-bold text-lg">Reviews</p>
-            <Reviews />
+            <Reviews gotReviews={reviews} />
             <a
                 href="https://cdn.tailwindcss.com"
                 target="_blank"
