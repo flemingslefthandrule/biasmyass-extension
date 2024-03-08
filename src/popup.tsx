@@ -1,12 +1,10 @@
 import { useState } from "react"
-
 import { sendToContentScript } from "@plasmohq/messaging"
-
 import { AuthorDetails } from "~features/author"
 import { Reviews } from "~features/reviews"
 import { Summary } from "~features/summary"
-
 import "~style.css"
+import axios from "axios"
 
 function IndexPopup() {
     const [authorName, setAuthorName] = useState("")
@@ -15,14 +13,37 @@ function IndexPopup() {
         require("../assets/test.webp")
     )
     const [authorWork, setAuthorWork] = useState("journalist")
+    const [authorSummary, setAuthorSummary] = useState("")
+    const apiurl = 'http://localhost:8000'
 
     const receiveAuthorName = async () => {
         try {
             const resp = await sendToContentScript({ name: "authorName" })
             const authorDetails = resp.split(",")
-            setAuthorName(authorDetails[0])
-            setAuthorPhoto(authorDetails[1])
-            setAuthorUrl(authorDetails[2])
+            // setAuthorName(authorDetails[0])
+            // setAuthorPhoto(authorDetails[1])
+            // setAuthorUrl(authorDetails[2])
+            const slug = authorDetails[0].replace(/ /g,"-")
+            axios.get(apiurl + "/" + slug)
+                .then(function (response) {
+                    console.log(response);
+                    setAuthorName(response.data.name)
+                    setAuthorPhoto(response.data.photo)
+                    setAuthorSummary(response.data.bio)
+                    setAuthorUrl(response.data.url)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
+
+            axios.get(apiurl + "/" + slug + "/reviews")
+                .then(function (response) {
+                    const reviews = response.data
+                    console.log(reviews)
+                })
+                .catch(function (error) {
+                    console.log(error);
+                })
         } catch (error) {
             setAuthorName("website not supported")
             setAuthorUrl(
@@ -30,6 +51,9 @@ function IndexPopup() {
             )
         }
     }
+
+
+
     return (
         <div
             onLoad={receiveAuthorName}
@@ -46,7 +70,9 @@ function IndexPopup() {
                 authorPhoto={authorPhoto}
                 authorWork={authorWork}
             />
-            <Summary />
+            <Summary 
+                authorSummary = {authorSummary}
+            />
             <p className="font-bold text-lg">Reviews</p>
             <Reviews />
             <a
