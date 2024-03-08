@@ -14,7 +14,7 @@ function IndexPopup() {
     )
     const [authorWork, setAuthorWork] = useState("journalist")
     const [authorSummary, setAuthorSummary] = useState("")
-    const [reviews, setReviews] = useState("")
+    const [reviews, setReviews] = useState([])
     const apiurl = 'http://localhost:8000'
 
     const receiveAuthorName = async () => {
